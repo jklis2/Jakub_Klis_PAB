@@ -1,27 +1,17 @@
 {
-  "name": "jakub_klis_pab",
+  "name": "projekt-1",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jklis2/Jakub_Klis_PAB.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jklis2/Jakub_Klis_PAB/issues"
-  },
-  "homepage": "https://github.com/jklis2/Jakub_Klis_PAB#readme",
   "dependencies": {
+    "@types/node": "^17.0.22",
     "express": "^4.17.3",
     "typescript": "^4.6.2"
-  },
-  "devDependencies": {
-    "@types/node": "^17.0.21"
   }
 }

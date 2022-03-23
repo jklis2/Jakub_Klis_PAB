@@ -26,6 +26,7 @@ function calculate(operation: string, num1: number, num2: number) {
       return ('Niepoprawna komenda! Mozesz tylko dodawac, odejmowac, mnozyc i dzielic.')
   }
 }
+
 app.get('/:operation/:num1/:num2', function(req, res) {
   let operation = req.params.operation
   let num1 = parseInt(req.params.num1)
