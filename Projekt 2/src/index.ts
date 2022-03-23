@@ -29,7 +29,7 @@ app.get('/note/:id', function (req: Request, res: Response) { // getting single 
     }
 
 })
-
+let noteId: number = 0;
 app.post('/note', function (req: Request, res: Response) {
 
     const id = req.body.id
@@ -53,7 +53,7 @@ app.post('/note', function (req: Request, res: Response) {
         console.log("Podaj poprawna tresc!")
     }
 
-    const noteId = uuidv4() // random id
+    noteId++ // random id
     const noteFinish = { ...note, id: noteId, createDate: createDate } // dodanie do obiektu "note" nowego param "id", "date"
     notes.push(noteFinish)
 
