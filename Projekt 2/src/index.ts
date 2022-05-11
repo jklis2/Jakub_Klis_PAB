@@ -1,4 +1,4 @@
-import { dbmain } from "./services"
+import { dbmain } from "./services/DBContext"
 
 const express = require('express')  
 const note = require('./controllers/noteController')
