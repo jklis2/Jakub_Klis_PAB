@@ -18,6 +18,4 @@ const Producent = mongoose.model('Producent', ProducentSchema)
 const Dostawca = mongoose.model('Dostawca', DostawcaSchema)
 const Kategoria = mongoose.model('Kategoria', KategoriaSchema)
 
-module.exports= Producent
-module.exports= Dostawca
-module.exports= Kategoria
+module.exports= {Producent, Dostawca, Kategoria}
