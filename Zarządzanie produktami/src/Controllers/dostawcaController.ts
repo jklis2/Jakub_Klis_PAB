@@ -2,6 +2,7 @@ import e, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import {DostawcaService} from '..//Services/dostawcaService'
 
+const auth = require('../auth')
 const express = require('express');
 const router = express.Router();
 const app = express()
@@ -9,13 +10,14 @@ app.use(express.json())
 
 const dostawcaService = new DostawcaService()
 
-router.post('/add', async (req: Request, res: Response) => 
+router.post('/add', auth, async (req: Request, res: Response) => 
 {
 
     const {NazwaDostawcy, NumerTelefonu} = req.body;
     try
     {
-        let dostawcaId = await dostawcaService.AddDostawca(NazwaDostawcy, NumerTelefonu);
+        const UserID = req.headers.userId
+        let dostawcaId = await dostawcaService.AddDostawca(UserID, NazwaDostawcy, NumerTelefonu);
         res.status(200).send(`Udało się dodać dostawcę o ID: ${dostawcaId}`);
     }
     catch(error)
@@ -26,7 +28,7 @@ router.post('/add', async (req: Request, res: Response) =>
     
 })
 
-router.delete('/delete/:id', async (req: Request, res: Response) => {
+router.delete('/delete/:id', auth, async (req: Request, res: Response) => {
     
     try
     {
@@ -37,7 +39,6 @@ router.delete('/delete/:id', async (req: Request, res: Response) => {
         {
             res.status(400).send("Dostawca nie istenieje!");
         }
-        const tokenUserId = req.headers.userId
 
         dostawcaService.DeleteDostawca(id)
         res.status(200).send("Udało Ci się usunąć dostawcę");
@@ -63,7 +64,7 @@ router.get('/get/:id', async (req: Request, res: Response) =>
 })
 
 
-router.put('/edit/:id', async (req: Request, res: Response) => 
+router.put('/edit/:id', auth, async (req: Request, res: Response) => 
 {
     const id:any = req.params.id
 

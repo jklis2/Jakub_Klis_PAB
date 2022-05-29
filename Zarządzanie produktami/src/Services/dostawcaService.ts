@@ -1,14 +1,15 @@
 import mongoose from "mongoose";
 import { dbmain } from "../DataBase/DbConnection";
-const {Producent, Dostawca, Kategoria} = require('../DataBase/models')
+const {Producent, Dostawca, Produkt} = require('../DataBase/models')
 
 export class DostawcaService
 {
-    async AddDostawca(_NazwaDostawcy:string, _NumerTelefonu:number)
+    async AddDostawca(_UserID:any, _NazwaDostawcy:string, _NumerTelefonu:number)
     {
         try
         {
             const nowydostawca = new Dostawca({
+                UserID: _UserID,
                 NazwaDostawcy: _NazwaDostawcy,
                 NumerTelefonu: +_NumerTelefonu
             })
